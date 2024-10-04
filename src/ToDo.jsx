@@ -4,8 +4,11 @@ const ToDo = () => {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
 
-    const toggleTaskCompletion = () => {
-
+    const toggleTaskCompletion = (index) => {
+        const updatedTasks = tasks.map((task, taskIndex) =>
+            taskIndex === index ? { ...task, completed: !task.completed } : task
+        );
+        setTasks(updatedTasks);
     };
 
     const handleInputChange = (e) => {
