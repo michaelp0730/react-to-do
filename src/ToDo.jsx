@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ToDo = () => {
     const [tasks, setTasks] = useState([]);
@@ -11,9 +11,7 @@ const ToDo = () => {
         setTasks(updatedTasks);
     };
 
-    const handleInputChange = (e) => {
-        setNewTask(e.target.value);
-    };
+    const handleInputChange = (e) => setNewTask(e.target.value);
 
     const addTask = () => {
         if (newTask.trim() !== '') {
