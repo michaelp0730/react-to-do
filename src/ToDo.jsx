@@ -16,12 +16,13 @@ const ToDo = () => {
     };
 
     const addTask = () => {
-        console.log('addTask newTask: ', newTask);
         if (newTask.trim() !== '') {
             setTasks([...tasks, {text: newTask, completed: false}]);
             setNewTask('');
         }
     };
+
+    const clearTasksList = () => setTasks([]);
 
     return (
         <div style={{ marginTop: '20px' }}>
@@ -39,6 +40,12 @@ const ToDo = () => {
                 <br />
                 <button type="button" onClick={addTask} style={{marginTop: '10px'}}>Add Task</button>
             </div>
+
+            {tasks.length > 0 && (
+                <div style={{ marginTop: '20px' }}>
+                    <button type="button" onClick={clearTasksList}>Clear Tasks List</button>
+                </div>
+            )}
         </div>
     );
 };
