@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 
 const ToDo = () => {
     const [tasks, setTasks] = useState([]);
@@ -6,7 +6,7 @@ const ToDo = () => {
 
     const toggleTaskCompletion = (index) => {
         const updatedTasks = tasks.map((task, taskIndex) =>
-            taskIndex === index ? { ...task, completed: !task.completed } : task
+            taskIndex === index ? {...task, completed: !task.completed} : task
         );
         setTasks(updatedTasks);
     };
@@ -23,24 +23,24 @@ const ToDo = () => {
     const clearTasksList = () => setTasks([]);
 
     return (
-        <div style={{ marginTop: '20px' }}>
+        <div style={{marginTop: '20px'}}>
             <h2>To Do List</h2>
             <ul>
                 {tasks.map((task, index) => (
                     <li key={index} className={task.completed ? 'task-completed' : ''}>
-                        <input type="checkbox" checked={task.completed} onChange={() => toggleTaskCompletion(index)} />
+                        <input type="checkbox" checked={task.completed} onChange={() => toggleTaskCompletion(index)}/>
                         {task.text}
                     </li>
                 ))}
             </ul>
-            <div style={{ marginTop: '20px' }}>
-                <input type="text" value={newTask} onChange={handleInputChange} placeholder="Enter a new task" />
-                <br />
+            <div style={{marginTop: '20px'}}>
+                <input type="text" value={newTask} onChange={handleInputChange} placeholder="Enter a new task"/>
+                <br/>
                 <button type="button" onClick={addTask} style={{marginTop: '10px'}}>Add Task</button>
             </div>
 
             {tasks.length > 0 && (
-                <div style={{ marginTop: '20px' }}>
+                <div style={{marginTop: '20px'}}>
                     <button type="button" onClick={clearTasksList}>Clear Tasks List</button>
                 </div>
             )}
