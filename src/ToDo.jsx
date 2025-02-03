@@ -1,26 +1,22 @@
-import {useState} from "react";
+import { useState } from "react";
 
 const ToDo = () => {
     const [tasks, setTasks] = useState([]);
-    const [newTask, setNewTask] = useState('');
-
-    const toggleTaskCompletion = (index) => {
-        const updatedTasks = tasks.map((task, taskIndex) =>
-            taskIndex === index ? {...task, completed: !task.completed} : task
-        );
-        setTasks(updatedTasks);
-    };
-
+    const [newTask, setNewTask] = useState("");
+    const clearTasksList = () => setTasks([]);
     const handleInputChange = (e) => setNewTask(e.target.value);
-
     const addTask = () => {
         if (newTask.trim() !== '') {
             setTasks([...tasks, {text: newTask, completed: false}]);
             setNewTask('');
         }
     };
-
-    const clearTasksList = () => setTasks([]);
+    const toggleTaskCompletion = (index) => {
+        const updatedTasks = tasks.map((currTask, currTaskIndex) =>
+            currTaskIndex === index ? { ...currTask, completed: !currTask.completed } : currTask
+        );
+        setTasks(updatedTasks);
+    };
 
     return (
         <div style={{marginTop: '20px'}}>
